@@ -32,4 +32,4 @@ jobs:
         ls -lah .
         git rev-parse --verify HEAD
         echo $ARTIFACT_DIR
-        echo "::set-output name=PLATFORM_TARGET::osx"
+        [[ "${{ matrix.os }}" == "macos-latest" ]] && echo "::set-output name=PLATFORM_TARGET::osx"
