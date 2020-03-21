@@ -27,10 +27,16 @@ jobs:
         ref: ${{ github.event.pull_request.head.sha }}
 
     - name:
+      id: haha
       run: |
         echo "hi"
         ls -lah .
         git rev-parse --verify HEAD
         echo $ARTIFACT_DIR
-        [[ "${{ matrix.os }}" == "macos-latest" ]] && echo "::set-output name=PLATFORM_TARGET::osx"
+        [[ "${{ matrix.os }}" == "macos-latest" ]] && echo "::set-output name=PLATFORM_TARGET::osx" || true
+        [[ "${{ matrix.os }}" == "ubuntu-latest" ]] && echo "::set-output name=PLATFORM_TARGET::ubuntu-latest" || true
       shell: bash
+
+    - name: ahah
+      run: |
+        echo $ {{ steps.haha.outputs.PLATFORM_TARGET }}
