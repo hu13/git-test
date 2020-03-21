@@ -34,9 +34,9 @@ jobs:
         git rev-parse --verify HEAD
         echo $ARTIFACT_DIR
         # [[ "${{ matrix.os }}" == "macos-latest" ]] && echo "::set-output name=PLATFORM_TARGET::osx" || true
-        [[ "${{ matrix.os }}" == "ubuntu-latest" ]] && echo "::set-output name=PLATFORM_TARGET::ubuntu-latest" || true
+        [[ "${{ matrix.os }}" == "ubuntu-latest" ]] && echo "::set-output name=PLATFORM_TARGET::ubuntu-latest"
       shell: bash
 
     - name: ahah
       run: |
-        echo $ {{ steps.haha.outputs.PLATFORM_TARGET }}
+        echo ${{ steps.haha.outputs.PLATFORM_TARGET }}
