@@ -6,13 +6,17 @@ on:
   push:
     branches:
       - master
-
+  pull_request:
 
 jobs:
 
   build:
 
     name: Upload merged commit artifacts
+
+    env:
+      ARTIFACT_DIR: ${{ github.event.pull_request.head.sha }}${{ github.sha }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -26,3 +30,4 @@ jobs:
         echo "hi"
         ls -lah .
         git rev-parse --verify HEAD
+        echo $ARTIFACT_DIR
