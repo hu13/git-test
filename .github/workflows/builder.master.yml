@@ -33,3 +33,4 @@ jobs:
         git rev-parse --verify HEAD
         echo $ARTIFACT_DIR
         [[ "${{ matrix.os }}" == "macos-latest" ]] && echo "::set-output name=PLATFORM_TARGET::osx"
+      shell: bash
