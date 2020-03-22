@@ -23,6 +23,14 @@ jobs:
 
     - name:
       run: |
+        [[ "${{ github.event_name }}" == "pull_request" ]] && HEAD_COMMIT=${{ github.event.pull_request.head.sha }}
+        [[ "${{ github.event_name }}" == "push" ]] && HEAD_COMMIT=${{ github.sha }}
+        echo "::set-env name=HEAD_COMMIT::$HEAD_COMMIT"
         echo "hi"
         ls -lah .
         git rev-parse --verify HEAD
+
+    - name: kill shit
+      run: |
+        echo "SHITTTT"
+        echo ${{ env.HEAD_COMMIT }}
