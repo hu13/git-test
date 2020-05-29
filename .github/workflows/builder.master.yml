@@ -34,5 +34,4 @@ jobs:
       run: |
         echo "adsfasdfasdf"
         echo ${{ env.HEAD_COMMIT }}
-        $(shell uname -s)
-
+        uname -s
