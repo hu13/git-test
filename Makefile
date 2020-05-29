@@ -37,9 +37,12 @@ ifeq ($(shell uname -s),Linux)
 	curl https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 -JLo $(BIN)/dep
 	chmod +x $(BIN)/dep
 
-	curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/$(PROTOC_ZIP)
-	unzip -o $(PROTOC_ZIP) -d /usr/local bin/protoc
-	unzip -o $(PROTOC_ZIP) -d /usr/local include/*
+	curl https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/$(PROTOC_ZIP) -JLo $(BIN)/$(PROTOC_ZIP)
+	7z x $(BIN)/$(PROTOC_ZIP) -o$(BIN) -aoa
+	# mv $(BIN)/bin/protoc.exe $(BIN)
+	ls -lah -R $(BIN)
+	# unzip -o $(PROTOC_ZIP) -d /usr/local bin/protoc
+	# unzip -o $(PROTOC_ZIP) -d /usr/local include/*
 else
 	brew install dep
 	brew install protobuf
