@@ -7,7 +7,7 @@ endef
 export USAGE
 
 SHELL := /bin/bash
-
+BIN := $(PWD)/bin
 
 help:
 	@echo "$$USAGE"
@@ -32,7 +32,7 @@ ifeq ($(OS),Windows_NT)
 	ls -lah $(BIN)
 else
 ifeq ($(shell uname -s),Linux)
-	BIN := $(PWD)/bin
+
 	mkdir $(BIN)
 	echo "HIIII"
 	curl https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 -JLo $(BIN)/dep
