@@ -35,3 +35,4 @@ jobs:
         echo "adsfasdfasdf"
         echo ${{ env.HEAD_COMMIT }}
         uname -s
+        make install-dep-tools
