@@ -8,6 +8,7 @@ export USAGE
 
 SHELL := /bin/bash
 BIN := $(PWD)/bin
+PROTOC_ZIP := protoc-3.8.0-linux-x86_64.zip
 
 help:
 	@echo "$$USAGE"
@@ -35,7 +36,7 @@ ifeq ($(shell uname -s),Linux)
 	echo "HIIII"
 	curl https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 -JLo $(BIN)/dep
 	chmod +x $(BIN)/dep
-	PROTOC_ZIP := protoc-3.8.0-linux-x86_64.zip
+
 	curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/$(PROTOC_ZIP)
 	unzip -o $(PROTOC_ZIP) -d /usr/local bin/protoc
 	unzip -o $(PROTOC_ZIP) -d /usr/local include/*
