@@ -10,6 +10,10 @@ SHELL := /bin/bash
 BIN := $(PWD)/bin
 PROTOC_ZIP := protoc-3.8.0-linux-x86_64.zip
 
+LINT := $(BIN)/golangci-lint
+DEP	:= $(BIN)dep
+PROTOC := $(BIN)/protoc
+
 help:
 	@echo "$$USAGE"
 
@@ -39,10 +43,13 @@ ifeq ($(shell uname -s),Linux)
 
 	curl https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/$(PROTOC_ZIP) -JLo $(BIN)/$(PROTOC_ZIP)
 	7z x $(BIN)/$(PROTOC_ZIP) -o$(BIN) -aoa
-	# mv $(BIN)/bin/protoc.exe $(BIN)
+	mv $(BIN)/bin/protoc $(BIN)
 	ls -lah -R $(BIN)
 	# unzip -o $(PROTOC_ZIP) -d /usr/local bin/protoc
 	# unzip -o $(PROTOC_ZIP) -d /usr/local include/*
+	$(PROTOC) --version
+	$(DEP) --version
+	$(LINT) --version
 else
 	brew install dep
 	brew install protobuf
