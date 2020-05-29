@@ -11,7 +11,7 @@ BIN := $(PWD)/bin
 PROTOC_ZIP := protoc-3.8.0-linux-x86_64.zip
 
 LINT := $(BIN)/golangci-lint
-DEP	:= $(BIN)dep
+DEP	:= $(BIN)/dep
 PROTOC := $(BIN)/protoc
 
 help:
