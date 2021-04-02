@@ -29,7 +29,7 @@ jobs:
         which perl
         readlink perl || true
         perl -v
-        /c/msys64/usr/bin/perl.exe -v
+        # /c/msys64/usr/bin/perl.exe -v
         /c/msys64/usr/bin/perl5.32.0.exe -v
 
         diff -r /c/msys64/usr/bin/core_perl /usr/share/perl5/core_perl
