@@ -15,7 +15,8 @@ jobs:
   build:
 
     name: Upload merged commit artifacts
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
 
@@ -23,18 +24,15 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
 
-    - name:
+    - name: run
       run: |
-        [[ "${{ github.event_name }}" == "pull_request" ]] && HEAD_COMMIT=${{ github.event.pull_request.head.sha }}
-        [[ "${{ github.event_name }}" == "push" ]] && HEAD_COMMIT=${{ github.sha }}
-        echo "::set-env name=HEAD_COMMIT::$HEAD_COMMIT"
-        echo "hi"
-        ls -lah .
-        git rev-parse --verify HEAD
+        which perl
+        readlink perl || true
+        perl -v
+        /c/msys64/usr/bin/perl.exe -v
+        /c/msys64/usr/bin/perl5.32.0.exe -v
 
-    - name: asdfasdfsadf
-      run: |
-        echo "adsfasdfasdf"
-        echo ${{ env.HEAD_COMMIT }}
-        uname -s
-        make install-dep-tools
+        diff -r /c/msys64/usr/bin/core_perl /usr/share/perl5/core_perl
+        echo "................................."
+        diff -r /c/strawberry/perl/lib /usr/share/perl5/core_perl
+      shell: bash
