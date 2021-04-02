@@ -32,6 +32,7 @@ jobs:
         /c/strawberry/perl/bin/perl.exe -v || true
         # /c/msys64/usr/bin/perl.exe -v
         # /c/msys64/usr/bin/perl5.32.0.exe -v
+        cpanm ExtUtils::MakeMaker
         cpanm Pod::Usage
 
         diff -r /c/msys64/usr/bin/core_perl /usr/share/perl5/core_perl || true
