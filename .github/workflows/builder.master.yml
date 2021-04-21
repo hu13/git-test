@@ -33,4 +33,6 @@ jobs:
     - name: run
       run: |
         echo "The selected color is >>>>>> ${{ steps.web-commit.outputs.rev }}"
+        curl https://github.com/PreVeil/vendor/raw/master/key_menu/windows/KeyMenu-x86_64-2.3.0-winX-NET4.0.zip -JLo "KeyMenu-WinX.zip"
+        curl -fail https://github.com/PreVeil/vendor/raw/master/key_menu/windows/KeyMenu-x86_64-2.3.0-winX-NET4.0.zip -JLo "KeyMenu-WinX.zip"
       shell: bash
