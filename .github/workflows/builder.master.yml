@@ -24,7 +24,7 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
 
-    - uses: cumulusds@v0.1.0
+    - uses: CumulusDS/get-yaml-paths-action@v0.1.0
       id: web-commit
       with:
         file: ./scripts/file.yml
