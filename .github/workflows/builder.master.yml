@@ -24,22 +24,13 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
 
+    - uses: cumulusds@latest
+      id: web-commit
+      with:
+        file: ./scripts/file.yml
+        rev: web.revision
+
     - name: run
       run: |
-        which perl
-        readlink perl || true
-        perl -v
-        ls -lah /usr/share/perl5/core_perl/pod || true
-        # /c/strawberry/perl/bin/perl.exe -v || true
-        # /c/msys64/usr/bin/perl.exe -v
-        # /c/msys64/usr/bin/perl5.32.0.exe -v
-        # cpanm ExtUtils::Manifest
-        # cpanm ExtUtils::MakeMaker
-        # cpanm Pod::Usage
-
-        # cp -r /c/strawberry/perl/lib/pod /usr/share/perl5/core_perl
-
-        diff -r /c/msys64/usr/bin/core_perl /usr/share/perl5/core_perl || true
-        echo "................................."
-        diff -r /c/strawberry/perl/lib /usr/share/perl5/core_perl || true
+        echo "The selected color is >>>>>> ${{ steps.web-commit.outputs.rev }}"
       shell: bash
