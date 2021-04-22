@@ -16,7 +16,7 @@ jobs:
 
     name: Upload merged commit artifacts
     # runs-on: ubuntu-latest
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     steps:
 
@@ -30,10 +30,7 @@ jobs:
         file: ./scripts/file.yml
         rev: web.revision
 
-    - name: run
-      run: |
-        echo "The selected color is >>>>>> ${{ steps.web-commit.outputs.rev }}"
-        gcm curl
-        Invoke-WebRequest https://github.com/PreVeil/vendor/raw/master/key_menu/windows/KeyMenu-x86_64-2.3.0-winX-NET4.0.zip -OutFile "KeyMenu-Win7.zip"
-        # curl -fail https://github.com/PreVeil/vendor/raw/master/key_menu/windows/KeyMenu-x86_64-2.3.0-winX-NET4.0.zip -OutFile "KeyMenu-WinX.zip"
-      # shell: bash
+    - name: build upgrade archive
+      env:
+        VERSION_PATH: ./scripts/version_lock.json
+      run: bash -c "eval $(pwsh ./scripts/export_vars.ps1) && echo hi"

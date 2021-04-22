@@ -1,0 +1,33 @@
+{
+    "version": "3.8.1",
+    "components": [
+        {
+            "name": "daemons",
+            "revision": "99cb0746ff08c03c2fbade6fa6048e6a8bbe6aaa"
+        },
+        {
+            "name": "updater",
+            "revision": "11952dbf464ef3017b8ce12d2b59766e959acef8"
+        },
+        {
+            "name": "drive",
+            "revision": "053aa79cd864dff985f82a7da5a400c4fa5b3d60"
+        },
+        {
+            "name": "key_menu",
+            "revision": "1eff9a3d9c3fc340f78f69a5894db0639e9078d6"
+        },
+        {
+            "name": "findersync",
+            "revision": "1eff9a3d9c3fc340f78f69a5894db0639e9078d6"
+        },
+        {
+            "name": "log_exporter",
+            "revision": "42ae42f3e1ad82ac3ce45a26660aeb9434f508b3"
+        },
+        {
+            "name": "web",
+            "revision": "eca05727e7c45fdc5af8c11a8a55b7b402ab6b66"
+        }
+    ]
+}
