@@ -12,7 +12,7 @@ jobs:
         uses: actions-cool/verify-files-modify@v1.2.0
         with:
           # token: ${{ secrets.GITHUB_TOKEN }}
-          forbid-paths: '.github/workflows'
+          forbid-paths: '.github/workflows/'
           comment: |
             Please don't modify this.
           skip-verify-users: 'asdf'
