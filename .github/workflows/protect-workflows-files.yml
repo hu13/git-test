@@ -15,7 +15,7 @@ jobs:
           forbid-paths: '.github/workflows/'
           comment: |
             Please don't modify this.
-          skip-verify-users: 'asdf'
+          skip-verify-users: 'hu13'
 
       - name: asdfasdf
         run: echo hiiii
