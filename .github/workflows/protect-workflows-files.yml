@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: verify-version
-        uses: actions-cool/verify-files-modify@v1.2.0
+        uses: actions-cool/verify-files-modify@v1.2.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           forbid-paths: '.github/workflows/'
