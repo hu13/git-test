@@ -33,6 +33,13 @@ jobs:
         file: ./scripts/file.yml
         rev: web.revision
 
+    - name: Get HEAD commit
+      run : |
+        [[ "${{ github.event_name }}" == "pull_request" ]] && HEAD_COMMIT=${{ github.event.pull_request.head.sha }}
+        [[ "${{ github.event_name }}" == "push" ]] && HEAD_COMMIT=${{ github.sha }}
+        echo "HEAD_COMMIT=$HEAD_COMMIT" >> $GITHUB_ENV
+      shell: bash
+
     - name: build upgrade archive
       env:
         VERSION_PATH: ./scripts/version_lock.json
@@ -49,3 +56,4 @@ jobs:
 
         CURR_ACTION_LINK=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
         echo ">>>>" $CURR_ACTION_LINK
+        echo "commit link", $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/${{ env.HEAD_COMMIT }}
