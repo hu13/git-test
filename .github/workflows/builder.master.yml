@@ -46,3 +46,6 @@ jobs:
 
         A=$(git log --no-merges -1 --oneline)
         echo ">>>>>>>" $A
+
+        CURR_ACTION_LINK=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+        echo ">>>>" $CURR_ACTION_LINK
