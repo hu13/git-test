@@ -15,8 +15,8 @@ jobs:
   build:
 
     name: Upload merged commit artifacts
-    # runs-on: ubuntu-latest
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
+    # runs-on: macos-latest
 
     steps:
 
@@ -38,4 +38,5 @@ jobs:
         echo ${{ github.event_path }}
         echo ${{ github.action_path }}
         echo ${{ github.actor }}
-        $(git log -1 --oneline --no-merges)
+        git log -1 --oneline --no-merges
+        git log -1 --pretty=format:"%s"
