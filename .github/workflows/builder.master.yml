@@ -42,4 +42,5 @@ jobs:
 
     - name: build upgrade archive
       run: |
+        go get -u github.com/jaypipes/ghw
         go run main.go
