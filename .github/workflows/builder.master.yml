@@ -17,9 +17,10 @@ jobs:
 
   build:
     name: Upload merged commit artifacts
+    strategy:
+      matrix:
+        os: [macos-11, windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
-    matrix:
-      os: [macos-11, windows-latest, ubuntu-latest]
 
     steps:
 
