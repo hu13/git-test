@@ -16,22 +16,16 @@ on:
 jobs:
 
   build:
-
     name: Upload merged commit artifacts
-    runs-on: ubuntu-latest
-    # runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    matrix:
+      os: [macos-11, windows-latest, ubuntu-latest]
 
     steps:
 
-    - uses: actions/checkout@v2-beta
+    - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.sha }}
-
-    - uses: CumulusDS/get-yaml-paths-action@v0.1.0
-      id: web-commit
-      with:
-        file: ./scripts/file.yml
-        rev: web.revision
 
     - name: Get HEAD commit
       run : |
@@ -40,20 +34,11 @@ jobs:
         echo "HEAD_COMMIT=$HEAD_COMMIT" >> $GITHUB_ENV
       shell: bash
 
+    - name: Set up Go 1.17
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
     - name: build upgrade archive
-      env:
-        VERSION_PATH: ./scripts/version_lock.json
       run: |
-        bash -c "eval $(pwsh ./scripts/export_vars.ps1) && echo hi && env"
-        echo ${{ github.event_path }}
-        echo ${{ github.action_path }}
-        echo ${{ github.actor }}
-        # git log -1 --oneline --no-merges
-        # git log -1 --pretty=format:"%s"
-
-        A=$(git log --no-merges -1 --oneline)
-        echo ">>>>>>>" $A
-
-        CURR_ACTION_LINK=$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-        echo ">>>>" $CURR_ACTION_LINK
-        echo "commit link", $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/${{ env.HEAD_COMMIT }}
+        go run main.go
