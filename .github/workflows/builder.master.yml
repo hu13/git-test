@@ -54,6 +54,11 @@ jobs:
         key: ${{ runner.os }}-pv-installer-test2-GG
 
     - name: Cache the base image
+      if: steps.cache-primes.outputs.cache-hit == 'true'
+      run: |
+        ls 'C:\.buildx-cache'
+
+    - name: Cache the base image
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: |
         mkdir 'C:\.buildx-cache'
