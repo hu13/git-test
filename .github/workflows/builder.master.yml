@@ -48,17 +48,19 @@ jobs:
 
     - name: test
       run: |
-        # Remove-Item "$Env:Programfiles\Unity" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
-        # Write-Host $err
-        # Remove-Item "$Env:Programfiles\Boost" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
-        # Write-Host $err
+        Remove-Item "$Env:Programfiles\dotnet" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
+        Write-Host $err
+        Remove-Item "$Env:Programfiles\Azure Cosmos DB Emulator" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
+        Write-Host $err
+        Remove-Item "$Env:Programfiles\MongoDB" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
+        Write-Host $err
 
         # C:\Program Files\dotnet
 
-        $path = "$Env:Programfiles"
-        $colItems = Get-ChildItem $path | Where-Object {$_.PSIsContainer -eq $true} | Sort-Object
-        foreach ($i in $colItems)
-        {
-            $subFolderItems = Get-ChildItem $i.FullName -recurse -force | Where-Object {$_.PSIsContainer -eq $false} | Measure-Object -property Length -sum | Select-Object Sum
-            $i.FullName + " -- " + "{0:N2}" -f ($subFolderItems.sum / 1MB) + " MB"
-        }
+        # $path = "$Env:Programfiles"
+        # $colItems = Get-ChildItem $path | Where-Object {$_.PSIsContainer -eq $true} | Sort-Object
+        # foreach ($i in $colItems)
+        # {
+        #     $subFolderItems = Get-ChildItem $i.FullName -recurse -force | Where-Object {$_.PSIsContainer -eq $false} | Measure-Object -property Length -sum | Select-Object Sum
+        #     $i.FullName + " -- " + "{0:N2}" -f ($subFolderItems.sum / 1MB) + " MB"
+        # }
