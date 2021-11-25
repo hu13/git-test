@@ -67,7 +67,7 @@ jobs:
         docker save hello-world | gzip > C:\.buildx-cache\base_installer_image.tgz
         ls 'C:\.buildx-cache'
         # docker load -i C:\.buildx-cache\base_installer_image.tgz
-        gunzip -c C:\.buildx-cache\base_installer_image.tgz | docker load
+        gunzip -c 'C:\.buildx-cache\base_installer_image.tgz' | docker load
         docker images --no-trunc --quiet hello-world
         docker images --no-trunc --quiet hello-world:latest
 
