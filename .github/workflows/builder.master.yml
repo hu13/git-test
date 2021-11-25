@@ -54,8 +54,10 @@ jobs:
         Write-Host $err
         Remove-Item "$Env:Programfiles\MongoDB" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
         Write-Host $err
+        Remove-Item "$Env:Programfiles\PostgreSQL" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
+        Write-Host $err
 
-        # C:\Program Files\dotnet
+        # C:\Program Files\PostgreSQL
 
         # $path = "$Env:Programfiles"
         # $colItems = Get-ChildItem $path | Where-Object {$_.PSIsContainer -eq $true} | Sort-Object
