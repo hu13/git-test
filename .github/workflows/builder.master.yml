@@ -50,16 +50,16 @@ jobs:
       id: cache-primes
       uses: actions/cache@v2
       with:
-        path: ${{ env.USERPROFILE }}/.buildx-cache
+        path: C:\.buildx-cache
         key: ${{ runner.os }}-pv-installer-test2-GG
 
     - name: Cache the base image
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: |
-        mkdir '$Env:USERPROFILE\.buildx-cache'
+        mkdir 'C:\.buildx-cache'
         docker pull hello-world
-        docker save --output '$Env:USERPROFILE\.buildx-cache\base_installer_image.tar' hello-world
-        ls '$Env:USERPROFILE\.buildx-cache'
+        docker save --output 'C:\.buildx-cache\base_installer_image.tar' hello-world
+        ls 'C:\.buildx-cache'
 
     - name: test
       run: |
