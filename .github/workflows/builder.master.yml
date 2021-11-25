@@ -51,7 +51,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\.buildx-cache
-        key: ${{ runner.os }}-pv-installer-test2-GG
+        key: ${{ runner.os }}-pv-installer-test2-GG3
 
     - name: Cache the base image
       if: steps.cache-primes.outputs.cache-hit == 'true'
