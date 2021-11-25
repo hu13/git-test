@@ -51,7 +51,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: C:\.buildx-cache
-        key: ${{ runner.os }}-pv-installer-test2-GG3
+        key: ${{ runner.os }}-pv-installer-test2-GG4
 
     - name: Cache the base image
       if: steps.cache-primes.outputs.cache-hit == 'true'
@@ -66,10 +66,12 @@ jobs:
         # docker save --output 'C:\.buildx-cache\base_installer_image.tar' hello-world
         docker save hello-world | gzip > C:\.buildx-cache\base_installer_image.tgz
         ls 'C:\.buildx-cache'
-        docker load -i C:\.buildx-cache\base_installer_image.tgz
+        # docker load -i C:\.buildx-cache\base_installer_image.tgz
+        gunzip -c C:\.buildx-cache\base_installer_image.tgz | docker load
 
     - name: test
       run: |
+        pigz
         echo "$Env:TEMP"
         echo "$Env:USERPROFILE"
         # Remove-Item "$Env:Programfiles\dotnet" -Recurse -Force
