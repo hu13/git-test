@@ -63,8 +63,10 @@ jobs:
       run: |
         mkdir 'C:\.buildx-cache'
         docker pull hello-world
-        docker save --output 'C:\.buildx-cache\base_installer_image.tar' hello-world
+        # docker save --output 'C:\.buildx-cache\base_installer_image.tar' hello-world
+        docker save hello-world | gzip > C:\.buildx-cache\base_installer_image.tgz
         ls 'C:\.buildx-cache'
+        docker load -i C:\.buildx-cache\base_installer_image.tgz
 
     - name: test
       run: |
