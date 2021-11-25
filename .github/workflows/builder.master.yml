@@ -48,9 +48,11 @@ jobs:
 
     - name: test
       run: |
-        Remove-Item "$Env:Programfiles\dotnet" -Recurse -Force
-        Remove-Item "$Env:Programfiles\Azure Cosmos DB Emulator" -Recurse -Force
-        Remove-Item "$Env:Programfiles\PostgreSQL" -Recurse -Force
+        echo "$Env:TEMP"
+        echo "$Env:USERPROFILE"
+        # Remove-Item "$Env:Programfiles\dotnet" -Recurse -Force
+        # Remove-Item "$Env:Programfiles\Azure Cosmos DB Emulator" -Recurse -Force
+        # Remove-Item "$Env:Programfiles\PostgreSQL" -Recurse -Force
 
         # Remove-Item "$Env:Programfiles\PostgreSQL" -Recurse -Force -ErrorAction SilentlyContinue -ErrorVariable err
         # Write-Host $err
