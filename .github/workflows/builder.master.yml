@@ -46,6 +46,21 @@ jobs:
     #     go mod download
     #     go run main.go
 
+    - name: Cache Docker layers
+      id: cache-primes
+      uses: actions/cache@v2
+      with:
+        path: ${{ env.USERPROFILE }}/.buildx-cache
+        key: ${{ runner.os }}-pv-installer-test2-GG
+
+    - name: Cache the base image
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: |
+        mkdir '$Env:USERPROFILE\.buildx-cache'
+        docker pull hello-world
+        docker save --output '$Env:USERPROFILE\.buildx-cache\base_installer_image.tar' hello-world
+        ls '$Env:USERPROFILE\.buildx-cache'
+
     - name: test
       run: |
         echo "$Env:TEMP"
