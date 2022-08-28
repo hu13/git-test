@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: update-pull-request
-      uses: kt3k/update-pr-description@v1.1.0
+      uses: kt3k/update-pr-description@v1.0.4
       with:
-        pr_title: "Release branch"
-        # pr_title: "Release branch: ${{ github.head_ref }}"
+        # pr_title: "Release branch"
+        pr_title: "Release branch: ${{ github.head_ref }}"
         # pr_body: ${{ steps.description.outputs.description }}
         destination_branch: master
         github_token: ${{ secrets.GITHUB_TOKEN }}
