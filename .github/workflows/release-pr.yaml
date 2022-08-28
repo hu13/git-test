@@ -1,17 +1,17 @@
 name: Release
 on:
   pull_request:
-    # branches:
-      # - 'release/**'
+    branches:
+      - 'release/**'
 
 jobs:
   release-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: update-pull-request
-        uses: kt3k/update-pr-description@v1.1.0
-        with:
-          pr_title: "Release branch:" ${{ github.head_ref }}
-          # pr_body: ${{ steps.description.outputs.description }}
-          destination_branch: master
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: update-pull-request
+      uses: kt3k/update-pr-description@v1.1.0
+      with:
+        pr_title: "Release branch:" ${{ github.head_ref }}
+        # pr_body: ${{ steps.description.outputs.description }}
+        destination_branch: master
+        github_token: ${{ secrets.GITHUB_TOKEN }}
