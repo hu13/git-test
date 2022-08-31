@@ -24,3 +24,16 @@ jobs:
         # pr_body: ${{ steps.description.outputs.description }}
         destination_branch: master
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: update-pull-request
+      run: |
+        echo ${GITHUB_REF##*/} 
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Push to ECR
+      run: echo ${{ steps.extract_branch.outputs.branch }}
+
