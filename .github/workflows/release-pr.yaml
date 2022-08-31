@@ -34,7 +34,7 @@ jobs:
     - name: Extract branch name
       if: github.event_name != 'pull_request'
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
+      id: extract_branch1
 
     - name: Push to ECR
       run: echo ${{ steps.extract_branch.outputs.branch }}
